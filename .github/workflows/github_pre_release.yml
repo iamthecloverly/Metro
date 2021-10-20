@@ -25,7 +25,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build Github unsigned pre-release apk
-      run: ./gradlew assembleGithubRelease --stacktrace --project-prop pre --project-prop split
+      run: ./gradlew assembleDebug --stacktrace --project-prop pre --project-prop split
 
     - name: Get current date and time
       id: date
