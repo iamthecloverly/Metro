@@ -37,7 +37,7 @@ jobs:
       with:
         name: metro_pre-release_${{ steps.date.outputs.date }}
         # path: ${{steps.sign_app.outputs.signedReleaseFile}}
-        path: app/build/outputs/apk/github/release/*-signed.apk
+        path: app/build/outputs/apk/debug/*.apk
 
     # Send success notification
     - name: Send success Telegram notification
@@ -46,9 +46,9 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_BUILDS_CHANNEL_TO }}
         token: ${{ secrets.TELEGRAM_BUILDS_BOT_TOKEN }}
-        message: "${{ github.workflow }} ${{ github.job }} #${{ github.run_number }} completed successfully.\nURL: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+        message: "${{ github.workflow }} ${{ github.job }} #${{ github.run_number }} completed successfully.\nURL: Download: [Github](https://github.com/iamthecloverly/Metro/releases)"
         # document: ${{steps.sign_app.outputs.signedReleaseFile}}
-        document: app/build/outputs/apk/github/release/*-signed.apk
+        document: app/build/outputs/apk/debug/*.apk
 
     # Send failure notification
     - name: Send failure Telegram notification
